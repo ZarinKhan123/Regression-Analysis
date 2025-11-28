@@ -1,0 +1,41 @@
+---
+title: "Assignment 3: Regression Analysis"
+output: html_document
+date: "November 26th, 2025"
+name: "Zarin Khan"
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load in the required dataset and libraries. Also get the first few rows of the data. 
+
+```{r}
+library(readr)
+exam <- read.csv("exams.csv")
+head(exam)
+```
+
+Building the model here. 
+
+```{r}
+model <- lm(math.score ~ parental.level.of.education + test.preparation.course, data = exam)
+summary(model)
+```
+Interpreting the model
+
+```{r}
+summary(model)$coefficient
+```
+Confidence interval
+
+```{r}
+confint(model)
+```
+
+Error rate
+
+```{r}
+sigma(model)/mean(exam$math.score)
+```
